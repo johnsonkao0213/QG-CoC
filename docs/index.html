@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="description" content="QG-CoC: A generalizable prompting method for multi-image reasoning in MLLMs">
@@ -7,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>QG-CoC: Question-Guided Chain-of-Captions</title>
 
-  <link rel="icon" href="./static/images/qg-coc.png">
+  <link rel="icon" href="./static/images/examples/qgcoc.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -33,178 +34,253 @@
 
   <script src="./visualizer/data/data_public.js" defer></script>
 </head>
+
 <body>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1">QG-CoC: Question-Guided Chain-of-Captions</h1>
-          <h2 class="subtitle is-3">A generalizable prompting method for multi-image reasoning in MLLMs</h2>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Anonymous Authors<sup>1</sup></span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Affiliation Hidden for Review</span>
-          </div>
-
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
+            <h2 class="title is-2">QG-CoC: Question-Guided Chain-of-Captions</h2>
+            <h3 class="subtitle is-4">A generalizable zero-shot prompting method for multi-image reasoning in MLLMs</h3>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://johnsonkao0213.github.io/">Kuei-Chun Kao</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://johnsonkao0213.github.io/">Tzu-Yin Hsu</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://johnsonkao0213.github.io/">Yunqi Hong</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://ruocwang.github.io/">Ruochen Wang</a><sup style="color:#6fbf73;">1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://web.cs.ucla.edu/~chohsieh/index.html">Cho-Jui Hsieh</a><sup
+                  style="color:#6fbf73;">1</sup>,
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup style="color:#6fbf73;">1</sup>University of California, Los
+                Angeles</span><br>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://aclanthology.org/2025.emnlp-main.1445/"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                     </span>
                     <span>Paper</span>
                   </a>
-              </span>
-              <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                </span>
+                <span class="link-block">
+                  <a href="https://aclanthology.org/2025.emnlp-main.1445/"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-link"></i>
                     </span>
                     <span>arXiv</span>
                   </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/johnsonkao0213/VL-ICL" class="external-link button is-normal is-rounded is-dark">
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/johnsonkao0213/QG-CoC"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
                     <span>Code</span>
                   </a>
-              </span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="content has-text-centered">
-      <img src="static/images/placeholder_overview.png" alt="QG-CoC Overview Diagram" width="70%" />
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container" style="margin-bottom: 2vh;">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Introduction</h2>
-        <div class="content has-text-justified">
-          <p>
-            <b>QG-CoC</b> is a zero-shot prompting method for enhancing multi-image understanding in Multimodal Large Language Models (MLLMs). It guides image captioning with question decomposition to better focus on relevant visual details, then synthesizes reasoning steps from sub-answers to reach a coherent final prediction.
-          </p>
-        </div>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="content has-text-centered">
+        <img src="static/images/examples/qgcoc_pipeline.png" alt="Example of Multi-Unknown Problem" width="70%" />
       </div>
+      <!-- </div> -->
     </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column  is-full has-text-centered content">
-        <h2 class="title is-3">Overview</h2>
-        <div class="carousel results-carousel">
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/examples/case1.png", alt="Example 1" width="70%">
-              <p>Example of QG-CoC prompting strategy (Figure 1)</p>
-            </div>
-          </div>
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/examples/case2.png", alt="Example 2" width="70%">
-              <p>Example of QG-CoC prompting strategy (Figure 2)</p>
-            </div>
-          </div>
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/examples/case3.png", alt="Example 3" width="70%">
-              <p>Example of QG-CoC prompting strategy (Figure 3)</p>
-            </div>
+  <section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction</h2>
+          <div class="content has-text-justified">
+            <p>
+              <b>QG-CoC</b> is a zero-shot prompting method for enhancing multi-image understanding in Multimodal Large
+              Language Models (MLLMs). It guides image captioning with question decomposition to better focus on
+              relevant visual details, then synthesizes reasoning steps from sub-answers to reach a coherent final
+              prediction.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-full has-text-centered content">
-        <h2 class="title is-3">Comparison</h2>
-        <p>Below are examples comparing QG-CoC with existing prompting strategies.</p>
-        <div class="carousel results-carousel">
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/examples/different_prompt.png" alt="Example 2" width="70%">
-              <p>Comparison of prompting methods (Figure 4)</p>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Overview (Examples)</h2>
+          <div class="carousel results-carousel">
+            <div class="box m-3">
+              <div class="content has-text-centered">
+                <img src="static/images/examples/case1.png" , alt="Example 1" width="50%">
+                <p>Example of QG-CoC prompting strategy (Figure 1)</p>
+              </div>
             </div>
-          </div>
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/examples/Different_Captioning_Settings.png" alt="Example 1" width="70%">
-              <p>Comparison of captioning strategies (Figure 5)</p>
+            <div class="box m-3">
+              <div class="content has-text-centered">
+                <img src="static/images/examples/case2.png" , alt="Example 2" width="50%">
+                <p>Example of QG-CoC prompting strategy (Figure 2)</p>
+              </div>
+            </div>
+            <div class="box m-3">
+              <div class="content has-text-centered">
+                <img src="static/images/examples/case3.png" , alt="Example 3" width="50%">
+                <p>Example of QG-CoC prompting strategy (Figure 3)</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-full has-text-centered content">
-        <h2 class="title is-3">Experimental Results</h2>
-        <p>QG-CoC achieves strong performance across multi-image (MMIU, MUIR) and single-image (ScienceQA, MMMU, MMBench) benchmarks.</p>
-        <div class="carousel results-carousel">
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/results-figures/gemini_MMIU_each_dim_1.png" alt="Benchmark Results" width="40%">
-              <p>Performance comparison of prompting strategies on MMIU (gemini) (Figure 6)</p>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Comparison</h2>
+          <div class="content has-text-justified">
+            <p>Below are examples comparing QG-CoC with existing prompting strategies.</p>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              We develop several prompting methods as our baselines:
+            </p>
+            <ul>
+              <li><strong>Detailed Captioning:</strong> Caption each image in detail.</li>
+              <li><strong>Question-Guided Detailed Captioning:</strong> Adding question when captioning in detail.</li>
+              <li><strong>DDCoT:</strong> First, decompose the question, then utilizes MLLMs to answer the sub-questions
+                and uses it as rationale.
+              </li>
+              <li><strong>CoCoT:</strong> Utilize MLLMs to describe the similarity and difference between multiple
+                images.
+              </li>
+              <li><strong>CCoT:</strong> Utilize MLLMs to generate a scene graph based on each image.
+              </li>
+            </ul>
+          </div>
+          <div class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/examples/different_prompt.png" alt="Example 2" width="70%">
+                <p>Comparison of different prompting methods</p>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/examples/Different_Captioning_Settings.png" alt="Example 1" width="70%">
+                <p>Comparison of different captioning strategies</p>
+              </div>
             </div>
           </div>
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/results-figures/llava_ov_MMIU_each_dim_1.png" alt="Benchmark Results" width="40%">
-              <p>Performance comparison of prompting strategies on MMIU (llava_one_vision) (Figure 7)</p>
-            </div>
-          </div>
-          <div class="box m-5">
-            <div class="content has-text-centered">
-              <img src="static/images/results-figures/llava_MUIR_each_dim_adjusted_labels.png" alt="Benchmark Results" width="60%">
-              <p>Performance comparison of prompting strategies on MUIR (llava) (Figure 8)</p>
-            </div>
-
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3 has-text-centered">BibTeX</h2>
-    <pre><code>@inproceedings{anonymous2025qgcoc,
-  author    = {Anonymous},
-  title     = {QG-CoC: Question-Guided Chain-of-Captions for Large Multimodal Models},
-  booktitle = {ACL Submission},
-  year      = {2025}
-}</code></pre>
-  </div>
-</section>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Experimental Results</h2>
+          <p>QG-CoC achieves strong performance across multi-image (MMIU, MUIR) and single-image (ScienceQA, MMMU,
+            MMBench) benchmarks. We evaluate on both closed-source and open-source 7B models</p>
+          <div class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/examples/main_table.png" alt="Benchmark Results" width="50%">
+                <p>Multi-Image and Single-Image benchmark performance of different models with various prompting
+                  methods.</p>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/results-figures/llava_ov_MMIU_each_dim.png" alt="Benchmark Results" width="40%">
+                <p>Performance comparison by image relationships of prompting strategies on MMIU (LLaVA-OV)</p>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/results-figures/mantis_MMIU_each_dim.png" alt="Benchmark Results" width="40%">
+                <p>Performance comparison by image relationships of prompting strategies on MMIU (Mantis)</p>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/results-figures/llava_MUIR_each_dim_adjusted_labels.png" alt="Benchmark Results"
+                  width="60%">
+                <p>Performance comparison by image relationships of prompting strategies on MMIU (LLaVA-OV)</p>
+              </div>
+            </div>
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="static/images/results-figures/mantis_MUIR_each_dim_adjusted_labels.png"
+                  alt="Benchmark Results" width="60%">
+                <p>Performance comparison by image relationships of prompting strategies on MMIU (Mantis)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
 
-<!-- <section>
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre><code>@inproceedings{kao-etal-2025-qg,
+      title = "{QG}-{C}o{C}: Question-Guided Chain-of-Captions for Large Multimodal Models",
+      author = "Kao, Kuei-Chun and
+      Tzu-Yin, Hsu and
+      Hong, Yunqi and
+      Wang, Ruochen and
+      Hsieh, Cho-Jui",
+      editor = "Christodoulopoulos, Christos and
+      Chakraborty, Tanmoy and
+      Rose, Carolyn and
+      Peng, Violet",
+      booktitle = "Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing",
+      month = nov,
+      year = "2025",
+      address = "Suzhou, China",
+      publisher = "Association for Computational Linguistics",
+      url = "https://aclanthology.org/2025.emnlp-main.1445/",
+      pages = "28433--28448",
+      ISBN = "979-8-89176-332-6"
+      }
+      </code></pre>
+    </div>
+  </section>
+
+  <!-- <section>
   <div class="section" id="org-banners" style="display:flex">
     <a href="https://www.ucla.edu/" target="_blank" rel="external">
       <img class="center-block org-banner" src="static/images/ucla.png">
@@ -212,11 +288,13 @@
   </div>
 </section> -->
 
-<footer class="footer">
-  <div class="content has-text-centered">
-    <p>Website adapted from <a href="https://beyondx.github.io/">BeyondX</a> and <a href="https://nerfies.github.io/">Nerfies</a>.</p>
-  </div>
-</footer>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>Website adapted from <a href="https://beyondx.github.io/">BeyondX</a> and <a
+          href="https://nerfies.github.io/">Nerfies</a>.</p>
+    </div>
+  </footer>
 
 </body>
+
 </html>
